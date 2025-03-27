@@ -1,0 +1,40 @@
+body{
+    background-color: #44e5ca;
+    color: #4c0f19;
+}
+
+.un{
+    display: flex;
+    justify-content: flex-end;
+    text-align: start;
+    width: 70%;
+    font-size: 40px;
+}
+
+.par1{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 110px;
+    width: 75%;
+    
+}
+
+.par2{
+    display: flex;
+    justify-content: flex-end;
+    width: 75%;
+    
+}
+
+.random{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+
+.buut{
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+}
