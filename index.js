@@ -13,29 +13,40 @@ function quote(Dict, Auteur, Date, Couleurf, Couleurp, Origine) {
 
     h1H.textContent = Dict;
     p1P.textContent = `Auteur: ${Auteur}`;
-    p2P.textContent = `Date: ${Date}`;
+    p2P.textContent = Date ? `Date: ${Date}` : "";
     ran.textContent = "Changer la citation";
 
     h1H.style.color = Couleurp;
     document.body.style.backgroundColor = Couleurf;
+    ran.style.backgroundColor = Couleurp;
 
     document.body.appendChild(h1H);
     document.body.appendChild(p1P);
-    document.body.appendChild(p2P);
+    if (Date) document.body.appendChild(p2P);
     document.body.appendChild(butt);
 
     ran.addEventListener("click", () => {
-        const i = (Math.random() * cit.length);
-        const randomQuote = cit[i];
-        h1H.textContent = randomQuote.Dict;
-        p1P.textContent = `Auteur: ${randomQuote.Auteur}`;
-        p2P.textContent = `Date: ${randomQuote.Date}`;
-        h1H.style.color = randomQuote.Couleurp;
-        document.body.style.backgroundColor = randomQuote.Couleurf;
+        changeQuote();
     });
 
+    return { h1H, p1P, p2P, ran };
+}
 
-    return quote;
+function change() {
+
+
+    h1H.textContent = randomQuote.Dict;
+    p1P.textContent = `Auteur: ${randomQuote.Auteur}`;
+    p2P.textContent = randomQuote.Date ? `Date: ${randomQuote.Date}` : "";
+    h1H.style.color = randomQuote.Couleurp;
+    document.body.style.backgroundColor = randomQuote.Couleurf;
+    ran.style.backgroundColor = randomQuote.Couleurp;
+
+    if (randomQuote.Date) {
+        p2P.style.display = "block";
+    } else {
+        p2P.style.display = "none";
+    }
 }
 
 
@@ -77,8 +88,6 @@ let cit = [
 		Couleurp: "#1e0f4c",
 	},
 ];
-
-
 
 
 
