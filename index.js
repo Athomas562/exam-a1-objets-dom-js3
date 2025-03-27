@@ -1,23 +1,43 @@
 function quote(Dict, Auteur, Date, Couleurf, Couleurp, Origine) {
-	const h1H = document.createElement("h1");
-	const p1P = document.createElement("p");
-	const p2P = document.createElement("p");
-	const ran = document.createElement("button");
+    const h1H = document.createElement("h1");
+    const p1P = document.createElement("p");
+    const p2P = document.createElement("p");
+    const ran = document.createElement("button");
     const butt = document.createElement("div");
 
-	h1H.classList.add("un");
-	p1P.classList.add("par1");
-	p2P.classList.add("par2");
-	ran.classList.add("random");
+    h1H.classList.add("un");
+    p1P.classList.add("par1");
+    p2P.classList.add("par2");
+    ran.classList.add("random");
+    butt.appendChild(ran);
 
-    butt.appendChild(ran)
+    h1H.textContent = Dict;
+    p1P.textContent = `Auteur: ${Auteur}`;
+    p2P.textContent = `Date: ${Date}`;
+    ran.textContent = "Changer la citation";
 
-	h1H.textContent(Dict);
-    p1P.textContent(Auteur , Date)
-    p2P.textContent(Origine);
+    h1H.style.color = Couleurp;
+    document.body.style.backgroundColor = Couleurf;
+
+    document.body.appendChild(h1H);
+    document.body.appendChild(p1P);
+    document.body.appendChild(p2P);
+    document.body.appendChild(butt);
+
+    ran.addEventListener("click", () => {
+        const i = (Math.random() * cit.length);
+        const randomQuote = cit[i];
+        h1H.textContent = randomQuote.Dict;
+        p1P.textContent = `Auteur: ${randomQuote.Auteur}`;
+        p2P.textContent = `Date: ${randomQuote.Date}`;
+        h1H.style.color = randomQuote.Couleurp;
+        document.body.style.backgroundColor = randomQuote.Couleurf;
+    });
+
 
     return quote;
 }
+
 
 let cit = [
 	{
@@ -58,22 +78,7 @@ let cit = [
 	},
 ];
 
-const butt2 = document.querySelector(".random");
 
-butt2.addEventListener("click", () => {
-    for (let i = 0; i < cit.length; i++) {
-        const citation = cit[i];
-    
-        let newcitation = quote(
-            citation.Dict,
-            citation.Auteur,
-            citation.Date,
-            citation.Couleurf,
-            citation.Couleurp,
-            citation.Origine,
-        );
-        document.body.appendChild(newcitation);
-    }
-    
-})
+
+
 
